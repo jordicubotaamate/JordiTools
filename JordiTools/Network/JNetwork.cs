@@ -4,11 +4,16 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Management;
 
 namespace JordiTools.Network
 {
     class JNetwork
     {
+        private String NomInterficie;
+        private String IP;
+
+
         private static String GenerateInterfaceAndIps()
         {
             StringBuilder Ips = new StringBuilder();
@@ -21,7 +26,7 @@ namespace JordiTools.Network
                     {
                         if (ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                         {
-                            Ips.Append(ni.Description.ToString());
+                            Ips.Append("- "+ni.Description.ToString());
                             Ips.Append("\n");
                             Ips.Append(ip.Address.ToString());
                             Ips.Append("\n");
@@ -36,5 +41,7 @@ namespace JordiTools.Network
         {
             return GenerateInterfaceAndIps();
         }
+
+        
     }
 }
