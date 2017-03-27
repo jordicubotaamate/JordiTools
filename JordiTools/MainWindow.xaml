@@ -1,0 +1,14 @@
+﻿<Window x:Class="JordiTools.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JordiTools"
+        mc:Ignorable="d"
+        Title="JordiTools" Height="350" Width="525">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" TextWrapping="Wrap" Text="Interfícies:" VerticalAlignment="Top" Width="120" FontSize="20"/>
+        <Label x:Name="TextIPs" Content="" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.079,0.058" Height="140" Width="120"/>
+
+    </Grid>
+</Window>
