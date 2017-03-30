@@ -24,7 +24,42 @@ namespace JordiTools
         public MainWindow()
         {
             InitializeComponent();
-            TextIPs.Content = JNetwork.GetIps();
+            JNetwork.GenerateInterfaceAndIps();
+            
+
+
+            // Add columns
+            var gridView = new GridView();
+            this.ListInter.View = gridView;
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Interfície",
+                DisplayMemberBinding = new Binding("Type")
+            });
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "IP",
+                DisplayMemberBinding = new Binding("IP")
+            });
+
+            
+
+            foreach (Interficie i in JNetwork.GetInterficies())
+            {
+                // Populate list
+                this.ListInter.Items.Add(i);
+
+            }
+
+            string externalip = new System.Net.WebClient().DownloadString("http://icanhazip.com");
+            ipPub.Content = externalip;
+
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

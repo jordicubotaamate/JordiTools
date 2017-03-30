@@ -5,10 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JordiTools"
         mc:Ignorable="d"
-        Title="JordiTools" Height="350" Width="525">
+        Title="JordiTools" Height="379.439" Width="564.252">
     <Grid>
-        <Label x:Name="TextIPs" Content="" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.079,0.058" Height="140" Width="192"/>
         <Label Content="Interfícies:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="45" FontSize="22" Margin="10,0,0,0"/>
+        <ListView x:Name="ListInter" HorizontalAlignment="Left" Height="250" Margin="29,50,0,0" VerticalAlignment="Top" Width="497" SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="IP Pública:" HorizontalAlignment="Left" Margin="297,11,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ipPub" Content="" HorizontalAlignment="Left" Margin="389,11,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Management;
+using JordiTools.Network;
 
 namespace JordiTools.Network
 {
     class JNetwork
     {
-        private String NomInterficie;
-        private String IP;
+        private static ArrayList Interficies = new ArrayList();
 
 
-        private static String GenerateInterfaceAndIps()
+        public static void GenerateInterfaceAndIps()
         {
             StringBuilder Ips = new StringBuilder();
             foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
@@ -26,22 +26,39 @@ namespace JordiTools.Network
                     {
                         if (ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                         {
-                            Ips.Append("- "+ni.Description.ToString());
+                            /*
+                             Ips.Append("- "+ni.Description.ToString());
                             Ips.Append("\n");
                             Ips.Append(ip.Address.ToString());
                             Ips.Append("\n");
-                        }
+                            */
+
+                            Interficies.Add(new Interficie(ni.Description.ToString(),ip.Address.ToString()));
+                        }  
                     }
                 }
             }
-            return Ips.ToString();
+            //return Ips.ToString();
         }
 
-        public static string GetIps()
+
+        public static string ToStringEE()
         {
-            return GenerateInterfaceAndIps();
+            //return GenerateInterfaceAndIps();
+            StringBuilder s = new StringBuilder();
+            foreach(Interficie i in Interficies){
+                s.Append("->  " + i.getIP());
+                s.Append("\n");
+                s.Append(i.getType());
+                s.Append("\n");
+            }
+            return s.ToString();
         }
 
-        
+        public static ArrayList GetInterficies()
+        {
+            return Interficies;
+        }
+
     }
 }
