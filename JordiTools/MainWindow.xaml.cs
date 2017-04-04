@@ -48,18 +48,20 @@ namespace JordiTools
             {
                 // Populate list
                 this.ListInter.Items.Add(i);
-                try
-                {
-                    string externalip = new System.Net.WebClient().DownloadString("http://icanhazip.com")+"";
-                    ipPub.Content = externalip;
-
-                }
-                catch
-                {
-                    ipPub.Content = "No hi ha IP Pública";
-                }
             }
-            
+
+            try
+            {
+                string externalip = new System.Net.WebClient().DownloadString("http://icanhazip.com") + "";
+                ipPub.Content = externalip;
+
+            }
+            catch
+            {
+                ipPub.Content = "No hi ha IP Pública";
+            }
+
+
 
 
         }
